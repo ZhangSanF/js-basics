@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+    var deng = {
+        wife1: {name: 'xiaoliu'},
+        wife2: {name: 'xiaozhang'},
+        wife3: {name: 'xiaowang'},
+        wife4: {name: 'xiaohua'},
+        sayWife: function(num) {
+            //return this.wife1
+            return this['wife' + num]
+        }
+    }
+    console.log(deng.sayWife(3))
+    </script>
+</body>
+</html>

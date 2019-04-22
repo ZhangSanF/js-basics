@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 继承 -->
+
+    <script>
+    // 1 原型链----------------------------------------------------------------------
+    // Grand.prototype.lastName = 'ji'
+    // function Grand() {}
+    // var grand = new Grand()
+
+    // Father.prototype = grand
+    // function Father() {
+    //     this.name = 'hehe'
+    // }
+    // var father = new Father()
+
+    // Son.prototype = father
+    // function Son() {}
+    // var son = new Son()
+
+    // 2 借用构造函数 (call/apply)----------------------------------------------------
+    // function Person(name, age, sex) {
+    //     this.name = name
+    //     this.age = age
+    //     this.sex = sex
+    // }
+    // function Student(name, age, sex, grade) {
+    //     Person.call(this, name, age, sex)
+    //     this.grade = grade
+    // }
+    // var student = new Student('ray', 18, 'female', 2018)
+
+    // 3 共享原型---------------------------------------------------------------------
+    // Father.prototype.lastName = 'Deng'
+    // function Father() {}
+    // function Son() {}
+
+    // // Son.prototype = Father.prototype
+    // // 封装
+    // function inherit(Target, Origin) {
+    //     Target.prototype = Origin.prototype
+    // }
+    // inherit(Son, Father)
+
+    // var father = new Father()
+    // var son = new Son()
+
+    // 4 圣杯模式---------------------------------------------------------------------
+    let inherit = (function(){
+        let F = function() {}
+        return function(Target, Origin) {
+            F.prototype = Origin.prototype
+            Target.prototype = new F()
+            Target.prototype.constuctor = Target
+            Target.prototype.uber = Origin.prototype // uber -->  __proto__
+        }
+    }())
+    Father.prototype.lastName = 'Deng'
+    function Father() {}
+    function Son() {}
+    inherit(Son, Father)
+    var father = new Father()
+    var son = new Son()
+    </script>
+</body>
+</html>

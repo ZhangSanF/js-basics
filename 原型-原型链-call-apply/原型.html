@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        原型: 原型是 function 对象的一个属性,他定义了构造函数制造出的对象的公共祖先. 通过该构造函数产生的对象,可以继承该原型的属性和方法,原型也是对象
+              集中存储同一类型的子对象共有成员的父对象
+        原型链: 绝大部分对象都会有一个 __proto__ 属性指向父对象,逐级继承,当自己没有其属性时,会沿着 __proto__ 属性的指向查找父对象是否有其属性,一直到
+                 Object.prototype的原型上,这样就形成了原型链
+                 var obj = Object.create(null) 创建的对象是没有 __proto__ 属性的
+     -->
+
+     <script>
+         // prototype
+         // 在原型的内部会自带一个属性 tonstructor(构造器) ,他的指向就是这个构造函数
+         Student.prototype = {
+            grade: 2018,
+            teacher: 'Mr Ji'
+         }
+
+         function Student(name, age, height) {
+            this.name = name
+            this.age = age
+            this.height = height
+         }
+
+        var xiaohong = new Student('xiaohong',18,156)
+        var xiaoming = new Student('xiaoming',20,170)
+        console.log(xiaohong)
+        console.log(xiaohong.grade,xiaohong.teacher)
+
+        console.log(xiaoming)
+        console.log(xiaoming.grade,xiaoming.teacher)
+     </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 构造函数内部原理
+        // 1 在函数体最前面隐式的加上 var this = {}
+        // 2 执行 this.xxx = xxx
+        // 3 隐式的返回 return this
+
+        function Student(name, age, height) {
+            //var this = {}
+            this.name = name
+            this.age = age
+            this.height = height
+            this.grade = 2018
+            //return this
+        }
+
+        var xiaohong = new Student('xiaohong',18,156)
+        var xiaoming = new Student('xiaoming',20,170)
+        console.log(xiaohong)
+        console.log(xiaoming)
+
+    </script>
+</body>
+</html>

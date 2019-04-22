@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- concat, slice, join -->
+
+    <script>
+    // concar 数组拼接
+    var arrConcar1 = [1,2,3]
+    var arrConcar2 = [4,5,6]
+    var newArrConcar = arrConcar1.concat(arrConcar2)
+    // console.log(newArrConcar)
+
+    // slice(从该位开始截取,截取到该位length)  只有一位参数从该位开始截取到最后
+    var arrSlice = [1,2,3,4,5,6]
+    var newArrSlice = arrSlice.slice(1,5)
+    // console.log(newArrSlice)
+
+    // join 按照指定的字符拼接 返回字符串
+    var arrJoin = [1,2,3,4,5,6,7]
+    var newArrJoin = arrJoin.join('') //可以传空字符串
+    // console.log(newArrJoin)
+
+    // 题(把下列字符串拼接在一起)
+    var str = 'alibaba'
+    var str1 = 'baidu'
+    var str2 = 'tencent'
+    var str3 = 'toutiao'
+    var str4 = 'wangyi'
+    // 1 不推荐
+    // var newStr = str + str1 + str2 + str3 + str4
+    // console.log(newStr)
+
+    // 2 不推荐
+    // var newStr = '' 
+    // var arr = [str, str1, str2, str3, str4]
+    // for(var i = 0; i < arr.length; i++) {
+    //     newStr += arr[i]
+    // }
+    // console.log(newStr)
+
+    // 3 散列
+    var arr = [str, str1, str2, str3, str4]
+    var newStr = arr.join('')
+    // console.log(newStr)
+    </script>
+</body>
+</html>

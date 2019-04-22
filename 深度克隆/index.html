@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 深度克隆: 把一个对象上的属性和方法复制到另一个对象上, 改变其中一个对象上的东西不影响另一个对象 -->
+    <script>
+    var obj = {
+        name: 'abc',
+        age: 123,
+        card: ['visa', 'master'],
+        wife: {
+            name: 'bcd',
+            son: {
+                name: 'aaa'
+            }
+        }
+    }
+    var obj1 = {}
+
+    // 遍历对象 for(var prop in obj)
+    // 判断是不是原始值 typeof() obj
+    // 判断是数组还是对象 toString
+    // 建立相应的数组或对象
+    // 递归
+
+    /**
+    origin 原始对象
+    target 目标对象
+    */
+    function deepClone(origin, target) {
+        var target = target || {},  // 判断是否有传 target
+            toStr = Object.prototype.toString,
+            arrStr = "[object Array]";
+        for(var prop in origin) {
+            if(origin.hasOwnProperty(prop)) {  // 判断去掉原型链上的属性和方法, 为 false 代表是原型链上的
+                if(origin[prop] !== 'null' && typeof(origin[prop]) == 'object') {  // 判断是否为原始值(去掉 null)
+                    if(toStr.call(origin[prop] == arrStr)) {  // 判断是数组还是对象
+                        target[prop] = []
+                    }else{
+                        target[prop] = {}
+                    }
+                    deepClone(origin[prop], target[prop])  // 递归
+                }else{
+                    target[prop] = origin[prop]
+                }
+            }
+        }
+        return target
+    }
+    </script>
+</body>
+</html>

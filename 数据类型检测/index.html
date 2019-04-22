@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // typeof*********************************************************************************************
+    // null 返回 object 
+    // var str = 'hello'
+    // console.log(typeof str)     //string
+
+    // var num = 123
+    // console.log(typeof num)     //number
+
+    // var bool = true
+    // console.log(typeof bool)    //boolean
+
+    // var a
+    // console.log(typeof a)       //undefined
+
+    // var fun = function () {}
+    // console.log(typeof fun)     //function
+
+    // var b = null
+    // console.log(typeof b)       //object
+
+    // var obj = {}
+    // console.log(typeof obj)     //object
+
+    // var arr = []
+    // console.log(typeof arr)     //object
+
+    // instanceof 检查 Object & Array*********************************************************************************************
+    // var obj = {}
+    // console.log(obj instanceof Object)     //true
+
+    // var arr = []
+    // console.log(arr instanceof Array)      //true
+
+    // toString*********************************************************************************************
+    Object.prototype.toString.call({})   //  "[object Object]"
+    Object.prototype.toString.call([])   //  "[object Array]"
+    Object.prototype.toString.call('')   //  "[object String]"
+    Object.prototype.toString.call(123)  //  "[object Number]"
+    Object.prototype.toString.call(true) //  "[object Boolean]"
+    Object.prototype.toString.call(undefined)  //  "[object Undefined]"
+    Object.prototype.toString.call(null)       //  "[object Null]"
+    Object.prototype.toString.call(function(){})   //  "[object Function]"
+
+    // 封装 typeof 方法
+    function myTypeOf(target) {
+        var ret = typeof(target)
+        var template = {
+            "[object Array]" : 'array',
+            "[object Object]" : 'object',
+            // 区分包装类型的 Number, Boolean, String
+            "[object Number]" : 'number - object',
+            "[object Boolean]" : 'boolean - object',
+            "[object String]" : 'string - object'
+        }
+        if(target === null) {
+            return 'null'
+        }else if(ret == 'object') {
+            var str = Object.prototype.toString.call(target)
+            return template[str]
+        }else {
+            return ret
+        }
+    }
+    </script>
+</body>
+</html>

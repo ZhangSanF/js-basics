@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- push, pop, unshift, shift, reverse, splice, sort -->
+
+    <script>
+    // push 在数组尾部追加
+    var arrPush = [1,2,3,4]
+    Array.prototype.push = function() {
+        for(var i = 0; i < arguments.length; i++) {
+            this[this.length] = arguments[i]
+        }
+        return this.length
+    }
+
+    // pop 把数组最后一位剪切出来
+    var arrPop = [1,2,3,4]
+    // console.log(arrPop.pop())
+    // console.log(arrPop)
+
+    // unshift 在数组头部添加
+    var arrUnshift = [1,2,3,4]
+    arrUnshift.unshift(0)
+    // console.log(arrUnshift)
+
+    // shift 在数组头部剪切一位出来
+    var arrShift = [1,2,3,4,5]
+    // console.log(arrShift.shift())
+    // console.log(arrShift)
+
+    // reverse 翻转
+    var arrReverse = [1,2,3,4,5]
+    // console.log(arrReverse.reverse())
+
+    // arr.splice(从第几位开始(负数:代表倒数第几位),截取多少的长度(0:代表不截取),在切口处添加新的数据)
+    var arrSplice = [1,2,2,3,4,4,4,5,5,6,7]
+    // console.log(arrSplice.splice(2,3))
+
+    // sort 排序
+    var arrSort = [23,1,4,37,15,45,32,16,9]
+    arrSort.sort(function(a, b) {
+        return a - b
+        // return b - a
+    })
+    // console.log(arrSort)
+
+    // 随机打乱原数组 返回
+    var arr = [1,2,3,4,5,6,7,8,9]
+    arr.sort(function() {
+        return Math.random() - 0.5
+    })
+    </script>
+</body>
+</html>

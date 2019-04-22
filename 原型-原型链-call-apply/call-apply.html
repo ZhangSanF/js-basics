@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        call/apply 改变 this 的指向
+        区别: 传参列表不同
+            call 需要把实参按照形参的个数传进去
+            apply 需要传一个 arguments
+     -->
+    <script>
+    
+    function Wheel(wheelSize, style) {
+        this.style = style
+        this.wheelSize = wheelSize
+    }
+
+    function Sit(c, sitColor) {
+        this.c = c
+        this.sitColor = sitColor
+    }
+    
+    function Model(height, width, len) {
+        this.height = height
+        this.width =  width
+        this.len = len
+    }
+
+    function Car(wheelSize, style, c, sitColor, height, width, len) {
+        Wheel.call(this, wheelSize, style)
+        Sit.call(this, c, sitColor)
+        Model.call(this, height, width, len)
+
+        // Wheel.apply(this, [wheelSize, style])
+        // Sit.apply(this, [c, sitColor])
+        // Model.apply(this, [height, width, len])
+    }
+
+    var car = new Car(100, '花里胡哨', '真皮', 'red', 1800, 1900, 4900)
+    console.log(car)
+    </script>
+</body>
+</html>

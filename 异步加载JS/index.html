@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 按需异步加载需要的功能 -->
+    <script>
+    
+    function loadScript(url, callback) {
+        let script = document.createElement('script')
+        script.type = "text/javascript"
+        if(script.readyState) {  // IE
+            script.onreadystatechange = function() {
+                if(script.readyState == 'complete' || script.readyState == 'loaded') {
+                    tools[callback]()
+                }
+            }
+        }else {  // Safari Chrome Firefox Opera
+            script.onload = function() {
+                tools[callback]()
+            }
+        }
+        script.src = url
+        document.head.appendChild(script)
+    }
+
+    loadScript('tools.js', 'test')
+
+    </script>
+</body>
+</html>
